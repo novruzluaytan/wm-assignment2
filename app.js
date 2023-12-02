@@ -12,15 +12,21 @@ function getData() {
                 </div>
                 <div class="mid">
                     <div class="title">${el.title}</div>
-                    <div class="price">Price: $${el.price}</div>
                     <div class="discount">Discount Percentage: %${el.discountPercentage}</div>
                     <div class="stock">Stock: ${el.stock}</div>
                     <div class="rating">Rating: ${el.rating}/5</div>
+                    <div class="price">$${el.price}</div>
                 </div>
-          </div>`;
+            </div>`;
         });
     });
 }
+
+
+
+// function fetchCategories() {
+
+// }
 
 
 
