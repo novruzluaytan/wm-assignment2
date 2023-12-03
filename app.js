@@ -2,6 +2,7 @@ var container = document.querySelector(".container");
 var navbar = document.querySelector(".navbar")
 var categoryDropDown = document.getElementById("category");
 var searchItem = document.getElementById("myInput");
+var infoPage = document.querySelector(".infoPage")
 
 window.onload = getData()
 window.onload = fetchCategories()
@@ -12,7 +13,7 @@ function getData() {
         container.innerHTML = ""
         res.data.products.forEach((el, index) => {
             container.innerHTML +=
-                `<div class="productContainer">
+                `<div class="productContainer" onClick="onProductClick(${el.id})">
                 <div class="top">
                     <img src="${el.thumbnail}">
                 </div>
@@ -68,7 +69,7 @@ function onCategorySelect(){
             container.innerHTML = ""
             res.data.products.forEach((el, index) => {
                 container.innerHTML +=
-                    `<div class="productContainer">
+                    `<div class="productContainer"  onClick="onProductClick(${el.id}))">
                     <div class="top">
                         <img src="${el.thumbnail}">
                     </div>
@@ -93,7 +94,7 @@ function onSearch(){
         container.innerHTML = ""
         res.data.products.forEach((el, index) => {
             container.innerHTML +=
-                `<div class="productContainer">
+                `<div class="productContainer" onClick="onProductClick(${el.id})">
                 <div class="top">
                     <img src="${el.thumbnail}">
                 </div>
@@ -109,6 +110,14 @@ function onSearch(){
     });
 
 }
+
+
+function onProductClick(id){
+    localStorage.setItem("id", id)
+    location.href="./infoPage.html";
+
+}
+
 
 
 
