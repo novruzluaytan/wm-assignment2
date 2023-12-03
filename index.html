@@ -14,15 +14,8 @@
 <body>
     <div class="navbar">
         <div class="categories">
-            <label for="products">Choose Category:</label>
-            <select id="products" name="products">
-                <option value="all">All</option>
-                <option value="smartphones">Smartphones</option>
-                <option value="laptops">Laptops</option>
-                <option value="fragrances">Fragrances</option>
-                <option value="skincare">Skincare</option>
-                <option value="groceries">Groceries</option>
-                <option value="homeDec">Home Decoration</option>
+            <label for="category">Choose Category:</label>
+            <select id="category" name="category" onchange="onCategorySelect();">
             </select>
         </div>
         <h3>PRODUCTS</h3>
