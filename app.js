@@ -10,10 +10,11 @@ window.onload = fetchCategories()
 
 function getData() {
     axios.get("https://dummyjson.com/products").then((res) => {
-        container.innerHTML = ""
-        res.data.products.forEach((el, index) => {
-            container.innerHTML +=
-                `<div class="productContainer" onClick="onProductClick(${el.id})">
+        container.innerHTML = "";
+        if (res.data && Array.isArray(res.data.products)) {
+            res.data.products.forEach((el, index) => {
+                container.innerHTML +=
+                    `<div class="productContainer" onClick="onProductClick(${el.id})">
                 <div class="top">
                     <img src="${el.thumbnail}">
                 </div>
@@ -26,8 +27,15 @@ function getData() {
                     <div class="category">${el.category}</div>
                 </div>
             </div>`;
+            });
+
+        } else {
+            console.error("Invalid response or missing product");
+        }
+    })
+        .catch((error) => {
+            console.error("Error:", error.message);
         });
-    });
 }
 
 
@@ -54,14 +62,14 @@ function fetchCategories() {
             option.appendChild(optionText);
 
             categoryDropDown.appendChild(option);
-            
+
         });
     });
 };
 
-function onCategorySelect(){
+function onCategorySelect() {
     var selectedOption = categoryDropDown.options[categoryDropDown.selectedIndex].text;
-    if(selectedOption == "All") {
+    if (selectedOption == "All") {
         getData()
     }
     else {
@@ -84,11 +92,11 @@ function onCategorySelect(){
             });
         });
     }
-   
+
 }
 
 
-function onSearch(){
+function onSearch() {
     var searchQuery = searchItem.value
     axios.get("https://dummyjson.com/products/search?q=" + searchQuery).then((res) => {
         container.innerHTML = ""
@@ -112,9 +120,9 @@ function onSearch(){
 }
 
 
-function onProductClick(id){
+function onProductClick(id) {
     localStorage.setItem("id", id)
-    location.href="./infoPage.html";
+    location.href = "./infoPage.html";
 
 }
 
