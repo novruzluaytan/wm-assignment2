@@ -116,14 +116,12 @@ function onSearch() {
             </div>`;
         });
     });
-
 }
 
 
 function onProductClick(id) {
     localStorage.setItem("id", id)
     location.href = "./infoPage.html";
-
 }
 
 
